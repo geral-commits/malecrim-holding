@@ -34,12 +34,14 @@
       }
     });
 
-    var mq = window.matchMedia("(min-width: 1024px)");
-    var onChange = function () {
-      if (mq.matches && !menu.hidden) setMenu(false);
-    };
-    if (mq.addEventListener) mq.addEventListener("change", onChange);
-    else if (mq.addListener) mq.addListener(onChange);
+    var mq = window.matchMedia ? window.matchMedia("(min-width: 1024px)") : null;
+    if (mq) {
+      var onChange = function () {
+        if (mq.matches && !menu.hidden) setMenu(false);
+      };
+      if (mq.addEventListener) mq.addEventListener("change", onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
   }
 
   /* ---- Lightbox da galeria ------------------------------------------ */
@@ -71,10 +73,10 @@
       if (lbClose) lbClose.focus();
     };
 
-    document.querySelectorAll("[data-lightbox-open]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        openLightbox(btn);
-      });
+    // delegação: a galeria pode ser renderizada depois deste script rodar
+    document.addEventListener("click", function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest("[data-lightbox-open]") : null;
+      if (btn) openLightbox(btn);
     });
 
     if (lbClose) lbClose.addEventListener("click", closeLightbox);

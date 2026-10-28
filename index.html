@@ -271,38 +271,17 @@
       </div>
       <a class="btn-link shrink-0" href="noticias.html">Todas as notícias<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="mt-12 grid gap-5 md:grid-cols-2">
-      <a class="card flex flex-col overflow-hidden !p-0" href="noticias.html#expopostos" data-od-id="noticia-expopostos">
-        <img src="assets/expopostos-arena-conhecimento.jpg"
-             alt="Equipe da M/Alecrim Holding na Arena do Conhecimento da ExpoPostos"
-             width="424" height="406" loading="lazy" decoding="async"
-             class="h-56 w-full object-cover object-top">
-        <div class="flex flex-1 flex-col p-7">
-          <span class="chip self-start">Evento do setor</span>
-          <h3 class="mt-4 text-xl">M/Alecrim Holding na ExpoPostos &amp; Conveniência</h3>
-          <p class="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-ink-soft">
-            Toda a liderança presente no maior evento de combustíveis da América Latina, em
-            São Paulo, em um momento de conexão, aprendizado e troca de experiências.
-          </p>
-          <span class="mt-6 inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-brand">Ler o registro<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-      </a>
-      <a class="card flex flex-col overflow-hidden !p-0" href="https://www.linkedin.com/company/m-alecrim-holding/" target="_blank" rel="noopener" data-od-id="noticia-linkedin">
-        <img src="assets/expopostos-equipe-jantar.jpg"
-             alt="Equipe da M/Alecrim Holding reunida durante a ExpoPostos"
-             width="875" height="488" loading="lazy" decoding="async"
-             class="h-56 w-full object-cover object-center">
-        <div class="flex flex-1 flex-col p-7">
-          <span class="chip self-start">LinkedIn</span>
-          <h3 class="mt-4 text-xl">Acompanhe a holding no LinkedIn</h3>
-          <p class="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-ink-soft">
-            Publicações sobre o dia a dia da operação, presença em eventos do setor e os
-            caminhos que a holding vem construindo no Nordeste.
-          </p>
-          <span class="mt-6 inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-brand">Abrir perfil<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-      </a>
+    <div class="mt-12 grid gap-5 md:grid-cols-2" data-noticias-destaque="2">
+      <div class="col-span-full rounded-card border border-dashed border-line bg-surface p-9 text-center">
+        <p class="text-[0.9375rem] text-ink-soft">Carregando publicações…</p>
+      </div>
     </div>
+    <noscript>
+      <p class="mt-6 text-[0.9375rem] text-ink-soft">
+        Acompanhe as publicações no
+        <a class="text-brand underline underline-offset-4" href="https://www.linkedin.com/company/m-alecrim-holding/" target="_blank" rel="noopener">LinkedIn da holding</a>.
+      </p>
+    </noscript>
   </div>
 </section>
 
@@ -362,6 +341,9 @@
     </div>
   </div>
 </footer>
+<script src="content/unidades.js"></script>
+<script src="content/noticias.js"></script>
+<script src="assets/conteudo.js" defer></script>
 <script src="assets/site.js" defer></script>
 </body>
 </html>

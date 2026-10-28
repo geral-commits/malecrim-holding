@@ -6,3 +6,7 @@ node_modules/
 # posts originais enviados pelo cliente (fonte dos recortes em assets/)
 image.png
 image-[0-9].png
+
+# metadados do Open Design
+.file-versions/
+*.artifact.json

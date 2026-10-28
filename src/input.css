@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @source "../*.html";
+@source "../assets/*.js";
 
 /* =========================================================================
    M/Alecrim Holding — design system
@@ -200,6 +201,18 @@
     border-radius: 9999px;
     background-color: var(--color-signal);
     flex: none;
+  }
+
+  /* ---- Filtro de noticias (toggle por origem) -------------------------- */
+  .filtro {
+    @apply inline-flex min-h-11 items-center rounded-full border border-line bg-canvas px-4
+           font-sans text-[0.875rem] font-medium text-ink-soft transition-all duration-150;
+  }
+  .filtro:hover { color: var(--color-ink); border-color: var(--color-navy-700); }
+  .filtro[aria-pressed="true"] {
+    background-color: var(--color-navy-950);
+    border-color: var(--color-navy-950);
+    color: #fff;
   }
 
   /* ---- Navegacao ------------------------------------------------------ */

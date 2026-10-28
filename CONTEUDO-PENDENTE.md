@@ -10,7 +10,7 @@ da marca. **Nenhum dado foi inventado.** Os itens abaixo estão marcados no site
 |---|---|---|
 | `contato.html` | Canais diretos | E-mail, telefone e endereço oficiais |
 | `contato.html` | Formulário | Destino de recebimento (e-mail ou serviço tipo Formspree) — hoje o formulário valida mas não envia |
-| `rede-de-postos.html` | Unidades | Nome, cidade, endereço, horário e serviços dos 5 postos |
+| `content/unidades.js` | Unidades | Nome, cidade, endereço, horário e serviços dos 5 postos — **um arquivo só**, alimenta a página da rede e os filtros de notícias |
 
 ## Enriquecem o site (não bloqueiam)
 
@@ -21,7 +21,12 @@ da marca. **Nenhum dado foi inventado.** Os itens abaixo estão marcados no site
 | `a-holding.html` | Foto da família | Legenda oficial (quem aparece) |
 | `negocios.html` | Investimentos | Setores e empresas do portfólio |
 | `sustentabilidade.html` | Indicadores | Métricas ambientais, certificações e projetos sociais |
-| `noticias.html` | ExpoPostos | Data da publicação / edição do evento |
+| `content/noticias.js` | ExpoPostos | Data da publicação (campo `data`) |
+
+## Publicar notícias
+
+A partir de agora cada frente tem o seu espaço: a holding, a rede e cada uma das 5 unidades.
+Para publicar, basta editar `content/noticias.js` — o passo a passo está no `README.md`.
 
 ## Ativos de marca
 

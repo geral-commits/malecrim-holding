@@ -12,7 +12,8 @@ Site estático de 7 páginas, sem framework de runtime: HTML + Tailwind CSS v4 c
 | `negocios.html` | Frentes de Negócio |
 | `rede-de-postos.html` | Rede de Postos |
 | `sustentabilidade.html` | Sustentabilidade e Impacto |
-| `noticias.html` | Notícias |
+| `noticias.html` | Notícias (listagem com filtro por frente) |
+| `noticia.html` | Notícia individual (`noticia.html?id=...`) |
 | `contato.html` | Contato |
 
 ## Design system
@@ -36,6 +37,86 @@ conversem entre si.
 **Elemento de marca:** o padrão de faixas diagonais vermelhas do banner oficial, usado como
 transição entre seções (`.brand-stripes`, `.brand-rule`).
 
+## Como publicar uma notícia
+
+Todo o conteúdo editável mora na pasta `content/`. **Não é preciso mexer em HTML.**
+
+### 1. Coloque a foto em `assets/`
+
+Use um nome descritivo, por exemplo `assets/unidade-2-nova-pista.jpg`.
+
+### 2. Abra `content/noticias.js` e cole um bloco novo **no topo da lista**
+
+```js
+{
+  id: "unidade-2-nova-pista",
+  titulo: "Unidade 2 inaugura nova pista de abastecimento",
+  origem: "posto-2",
+  data: "2026-03-14",
+  resumo: "Uma ou duas frases que aparecem no cartão da listagem.",
+  imagem: "assets/unidade-2-nova-pista.jpg",
+  alt: "Nova pista de abastecimento da Unidade 2",
+  corpo: [
+    "Primeiro parágrafo.",
+    "Segundo parágrafo."
+  ],
+  destaque: "",
+  galeria: [],
+  links: []
+},
+```
+
+### 3. Commit e push
+
+Pronto. A notícia aparece sozinha em três lugares:
+
+- na **listagem** (`noticias.html`), já dentro do filtro certo;
+- na **home**, se estiver entre as duas mais recentes;
+- na **página da própria unidade** — o cartão da Unidade 2 passa a mostrar
+  “Notícias desta unidade (1)”.
+
+### O campo `origem`
+
+É o que decide em qual filtro a notícia cai:
+
+| Valor | Aparece como |
+|---|---|
+| `holding` | Holding |
+| `rede` | Rede de Postos |
+| `posto-1` … `posto-5` | o nome que estiver em `content/unidades.js` |
+
+Os filtros são gerados automaticamente e **só aparecem para frentes que já têm
+publicação** — nada de aba vazia no site.
+
+### Datas
+
+`data: ""` faz o site mostrar “data a confirmar” em vez de inventar uma.
+Notícias sem data ficam no topo da lista.
+
+## Dados das unidades
+
+`content/unidades.js` alimenta a página “Rede de Postos” **e** os filtros de notícias.
+Campo preenchido aparece; campo vazio (`""`) vira o selo “a confirmar”. Ao receber os
+dados reais dos 5 postos, edite só esse arquivo.
+
+## Testes
+
+```bash
+npm test
+```
+
+Renderiza as páginas num DOM real (jsdom) e verifica a listagem, os filtros, o estado
+vazio por unidade, a página de detalhe, o id inválido, as unidades e o escape de HTML
+no conteúdo.
+
+## Uma nota sobre SEO
+
+Notícias e unidades são renderizadas no navegador a partir de `content/`. Isso foi
+escolhido de propósito: publicar vira “editar um arquivo e dar commit”, sem build.
+O custo é que os buscadores indexam melhor as 7 páginas institucionais do que as
+notícias individuais. Se o volume de publicações crescer, dá para gerar HTML estático
+a partir dos mesmos arquivos de `content/` sem mudar nada de layout.
+
 ## Desenvolvimento
 
 ```bash
@@ -57,10 +138,14 @@ npm run build   # src/input.css -> assets/site.css
 
 ```
 index.html, a-holding.html, ...   páginas
+content/noticias.js               ← as notícias (editar aqui para publicar)
+content/unidades.js               ← os 5 postos (editar aqui quando chegarem os dados)
 src/input.css                     fonte do design system (Tailwind v4)
 assets/site.css                   CSS compilado (versionado)
-assets/site.js                    menu mobile, galeria com lightbox, validação do formulário
+assets/conteudo.js                renderiza notícias e unidades a partir de content/
+assets/site.js                    menu mobile, lightbox, validação do formulário
 assets/*.jpg|png                  fotos e logomarcas
+tests/conteudo.test.mjs           testes de renderização
 ```
 
 ## Pendências

@@ -6,10 +6,12 @@
   "scripts": {
     "build": "tailwindcss -i ./src/input.css -o ./assets/site.css --minify",
     "dev": "tailwindcss -i ./src/input.css -o ./assets/site.css --watch",
-    "serve": "python3 -m http.server 4173"
+    "serve": "python3 -m http.server 4173",
+    "test": "node tests/conteudo.test.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "jsdom": "^29.1.1",
     "tailwindcss": "^4.3.3"
   }
 }
