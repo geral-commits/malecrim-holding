@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+.od-skills/
+
+# posts originais enviados pelo cliente (fonte dos recortes em assets/)
+image.png
+image-[0-9].png

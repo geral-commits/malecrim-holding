@@ -1,0 +1,15 @@
+{
+  "name": "malecrim-holding-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da M/Alecrim Holding",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./assets/site.css --minify",
+    "dev": "tailwindcss -i ./src/input.css -o ./assets/site.css --watch",
+    "serve": "python3 -m http.server 4173"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
